@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhejo Multi-Brand Portfolio — Jeevan Sirdeshpande</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0f0f; --paper: #f7f5f0; --card: #ffffff;
+    --red: #c84b2f; --muted: #6b6560; --line: #e2dfd9; --bg2: #f0ede8;
+    --info-bg: #e8f0f8; --info-text: #0c447c;
+    --warn-bg: #faeeda; --warn-text: #633806;
+    --succ-bg: #eaf3de; --succ-text: #27500a;
+    --dang-bg: #faece7; --dang-text: #712b13;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e4dc; --paper: #1a1917; --card: #232220;
+      --red: #e07055; --muted: #9b9590; --line: #2e2c29; --bg2: #272523;
+      --info-bg: #0c2a44; --info-text: #85b7eb;
+      --warn-bg: #3a2800; --warn-text: #fac775;
+      --succ-bg: #142808; --succ-text: #97c459;
+      --dang-bg: #3a1208; --dang-text: #f0997b;
+    }
+  }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--paper); color: var(--ink);
+    padding: 2rem 1.25rem 3rem;
+    max-width: 820px; margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 6px;
+  }
+  .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    color: var(--ink); margin-bottom: 6px; line-height: 1.25;
+  }
+  .subline { font-size: 13px; color: var(--muted); margin-bottom: 1.75rem; }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px; margin-bottom: 1.75rem;
+  }
+  .metric { background: var(--bg2); border-radius: 8px; padding: 0.9rem 1rem; }
+  .metric-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; line-height: 1.4; }
+  .metric-value { font-size: 20px; font-weight: 500; color: var(--ink); }
+  .brands {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 10px; margin-bottom: 1.5rem;
+  }
+  .brand-card {
+    background: var(--card);
+    border: 0.5px solid var(--line);
+    border-radius: 12px; padding: 1rem;
+  }
+  .brand-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .brand-avatar {
+    width: 34px; height: 34px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500; flex-shrink: 0;
+  }
+  .brand-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .brand-desc { font-size: 11px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+  .badge {
+    display: inline-block; font-size: 10px;
+    padding: 2px 8px; border-radius: 6px; line-height: 1.6;
+  }
+  .operations {
+    border: 0.5px solid var(--line); border-radius: 8px;
+    padding: 1rem 1.1rem;
+  }
+  .ops-title { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .ops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 6px 16px;
+  }
+  .ops-item {
+    font-size: 11px; color: var(--muted); line-height: 1.6;
+    padding-left: 12px; position: relative;
+  }
+  .ops-item::before {
+    content: '';
+    position: absolute; left: 0; top: 7px;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--red);
+  }
+</style>
+</head>
+<body>
+
+<p class="eyebrow">Case study — Bhejo Ecommerce Pvt Ltd</p>
+<h1 class="headline">Five live storefronts. One operator.</h1>
+<p class="subline">Multi-brand paid media and e-commerce operations — 2026 to present</p>
+
+<div class="metrics">
+  <div class="metric">
+    <p class="metric-label">Combined monthly ad spend</p>
+    <p class="metric-value">₹40L/mo</p>
+  </div>
+  <div class="metric">
+    <p class="metric-label">Total SKUs managed</p>
+    <p class="metric-value">200,000+</p>
+  </div>
+  <div class="metric">
+    <p class="metric-label">Titles cleaned &amp; standardised</p>
+    <p class="metric-value">100,000+</p>
+  </div>
+</div>
+
+<div class="brands">
+  <div class="brand-card">
+    <div class="brand-header">
+      <div class="brand-avatar" style="background:var(--info-bg); color:var(--info-text);">OMS</div>
+      <p class="brand-name">One Minute Saree</p>
+    </div>
+    <p class="brand-desc">Ready-to-wear ethnic fashion</p>
+    <span class="badge" style="background:var(--info-bg); color:var(--info-text);">Google · Meta</span>
+  </div>
+
+  <div class="brand-card">
+    <div class="brand-header">
+      <div class="brand-avatar" style="background:var(--warn-bg); color:var(--warn-text);">iB</div>
+      <p class="brand-name">iBhejo</p>
+    </div>
+    <p class="brand-desc">US product imports — India market</p>
+    <span class="badge" style="background:var(--warn-bg); color:var(--warn-text);">Google · Microsoft · Meta</span>
+  </div>
+
+  <div class="brand-card">
+    <div class="brand-header">
+      <div class="brand-avatar" style="background:var(--succ-bg); color:var(--succ-text);">GD</div>
+      <p class="brand-name">Global Delivered</p>
+    </div>
+    <p class="brand-desc">US product imports — UAE market</p>
+    <span class="badge" style="background:var(--succ-bg); color:var(--succ-text);">GMC ban resolved</span>
+  </div>
+
+  <div class="brand-card">
+    <div class="brand-header">
+      <div class="brand-avatar" style="background:var(--dang-bg); color:var(--dang-text);">KP</div>
+      <p class="brand-name">Karmaplace</p>
+    </div>
+    <p class="brand-desc">Ethnicwear — PHP to BigCommerce</p>
+    <span class="badge" style="background:var(--dang-bg); color:var(--dang-text);">20K SKU migration</span>
+  </div>
+</div>
+
+<div class="operations">
+  <p class="ops-title">What running this portfolio looks like</p>
+  <div class="ops-grid">
+    <p class="ops-item">Campaign strategy across 3 ad platforms simultaneously</p>
+    <p class="ops-item">Feed health management across Shopify + BigCommerce</p>
+    <p class="ops-item">GTM + GA4 tracking maintained across all storefronts</p>
+    <p class="ops-item">On-site SEO, URL structure, and internal linking</p>
+    <p class="ops-item">Product data quality and listing accuracy at scale</p>
+    <p class="ops-item">Merchant Center feed management and issue resolution</p>
+  </div>
+</div>
+
+</body>
+</html>

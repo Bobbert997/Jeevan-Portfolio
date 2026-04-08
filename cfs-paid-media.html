@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFS Paid Media — Jeevan Sirdeshpande</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0f0f0f; --paper: #f7f5f0; --card: #ffffff;
+    --accent: #1a3a5c; --red: #c84b2f; --muted: #6b6560;
+    --line: #e2dfd9; --green: #2d6a4f; --bg2: #f0ede8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e4dc; --paper: #1a1917; --card: #232220;
+      --accent: #7aabdc; --red: #e07055; --muted: #9b9590;
+      --line: #2e2c29; --green: #5aaa7a; --bg2: #272523;
+    }
+  }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 2rem 1.25rem 3rem;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 6px;
+  }
+  .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    color: var(--ink); margin-bottom: 6px; line-height: 1.25;
+  }
+  .subline {
+    font-size: 13px; color: var(--muted); margin-bottom: 1.75rem;
+  }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px; margin-bottom: 1.75rem;
+  }
+  .metric {
+    background: var(--bg2); border-radius: 8px; padding: 0.9rem 1rem;
+  }
+  .metric-label {
+    font-size: 11px; color: var(--muted); margin-bottom: 4px; line-height: 1.4;
+  }
+  .metric-value {
+    font-size: 20px; font-weight: 500; color: var(--ink);
+  }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-bottom: 10px; font-size: 12px; color: var(--muted);
+  }
+  .legend span { display: flex; align-items: center; gap: 5px; }
+  .legend-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .legend-dash {
+    width: 18px; height: 2px; border-radius: 1px;
+    background: var(--red); flex-shrink: 0;
+  }
+  .chart-wrap {
+    position: relative; width: 100%;
+    height: clamp(220px, 40vw, 300px);
+    margin-bottom: 1.5rem;
+  }
+  .eras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+  }
+  .era {
+    border-left: 2px solid var(--accent);
+    padding-left: 10px;
+  }
+  .era.mid { border-color: var(--red); }
+  .era.late { border-color: var(--green); }
+  .era-title { font-size: 11px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .era-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<p class="eyebrow">Case study — Choice Furniture Superstore</p>
+<h1 class="headline">£28.8M revenue. One account. A decade.</h1>
+<p class="subline">Google &amp; Meta paid media — managed in-house via FFOS, 2015–2025</p>
+
+<div class="metrics">
+  <div class="metric">
+    <p class="metric-label">Total revenue generated</p>
+    <p class="metric-value">£28.8M</p>
+  </div>
+  <div class="metric">
+    <p class="metric-label">Peak daily revenue</p>
+    <p class="metric-value">£8,000</p>
+  </div>
+  <div class="metric">
+    <p class="metric-label">Daily ad spend range</p>
+    <p class="metric-value">£400–1,800</p>
+  </div>
+  <div class="metric">
+    <p class="metric-label">Revenue growth from baseline</p>
+    <p class="metric-value">+200%</p>
+  </div>
+</div>
+
+<div class="legend">
+  <span><span class="legend-sq" style="background:var(--accent)"></span>Revenue index (2015 = 100)</span>
+  <span><span class="legend-dash"></span>Campaign era shift</span>
+</div>
+
+<div class="chart-wrap">
+  <canvas id="cfsChart"></canvas>
+</div>
+
+<div class="eras">
+  <div class="era">
+    <p class="era-title">Search-led (2015–2017)</p>
+    <p class="era-desc">Brand + non-brand structuring, negative keyword frameworks built from scratch.</p>
+  </div>
+  <div class="era mid">
+    <p class="era-title">Multi-channel expansion (2018–2021)</p>
+    <p class="era-desc">Shopping, Meta, Criteo remarketing, AWIN affiliate. Full funnel coverage.</p>
+  </div>
+  <div class="era late">
+    <p class="era-title">PMax transition (2022–2025)</p>
+    <p class="era-desc">Adapted ahead of industry curve. Audience signal frameworks refined over multiple cycles.</p>
+  </div>
+</div>
+
+<script>
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const gridCol = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+  const textCol = isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.38)';
+  const lineCol = isDark ? '#7aabdc' : '#1a3a5c';
+  const fillCol = isDark ? 'rgba(122,171,220,0.12)' : 'rgba(26,58,92,0.07)';
+  const eraDash = isDark ? '#e07055' : '#c84b2f';
+
+  const labels = ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+  const data =   [100,   118,   140,   168,   195,   212,   240,   258,   275,   290,   300];
+
+  const plugin = {
+    id: 'eraBands',
+    beforeDraw(chart) {
+      const { ctx, chartArea: { top, bottom }, scales: { x } } = chart;
+      if (!x) return;
+      [2.5, 6.5].forEach(pos => {
+        const px = x.getPixelForValue(pos);
+        ctx.save();
+        ctx.beginPath();
+        ctx.setLineDash([5, 4]);
+        ctx.strokeStyle = eraDash;
+        ctx.lineWidth = 1.5;
+        ctx.moveTo(px, top);
+        ctx.lineTo(px, bottom);
+        ctx.stroke();
+        ctx.restore();
+      });
+    }
+  };
+
+  new Chart(document.getElementById('cfsChart'), {
+    type: 'line',
+    plugins: [plugin],
+    data: {
+      labels,
+      datasets: [{
+        data,
+        borderColor: lineCol,
+        backgroundColor: fillCol,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointBackgroundColor: lineCol,
+        borderWidth: 2.5,
+        pointHoverRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `Revenue index: ${ctx.parsed.y}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: gridCol },
+          ticks: {
+            color: textCol,
+            font: { size: 11 },
+            autoSkip: false,
+            maxRotation: 45
+          }
+        },
+        y: {
+          grid: { color: gridCol },
+          ticks: { color: textCol, font: { size: 11 } },
+          title: {
+            display: true,
+            text: 'Revenue index (2015 = 100)',
+            color: textCol,
+            font: { size: 11 }
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
